@@ -42,6 +42,7 @@ header {
     padding: 20px 60px;
     background: rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 215, 0, 0.3);
     z-index: 1000;
     transition: 0.4s;
 }
@@ -74,9 +75,14 @@ header {
     color: #000;
 }
 
+/* Hamburger Menu */
 .hamburger {
     display: none;
     cursor: pointer;
+    flex-direction: column;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
 }
 
 .hamburger span {
@@ -84,8 +90,23 @@ header {
     width: 30px;
     height: 4px;
     background: #FFD700;
-    margin: 6px 0;
+    margin: 4px 0;
     transition: 0.4s;
+    border-radius: 2px;
+    box-shadow: 0 0 8px #00BFFF;
+}
+
+/* Cross (X) when active */
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(8px, -8px);
 }
 
 /* Home Section */
@@ -105,17 +126,23 @@ header {
 }
 
 /* About, Pricing, Contact */
-.about-section, .pricing-section, .contact-section {
+.about-section,
+.pricing-section,
+.contact-section {
     background: linear-gradient(135deg, #001f3f, #004e92);
 }
 
-.about-section h2, .pricing-section h2, .contact-section h2 {
+.about-section h2,
+.pricing-section h2,
+.contact-section h2 {
     font-size: 3em;
     color: #FFD700;
     margin-bottom: 40px;
 }
 
-.about-section p, .pricing-section p, .contact-section p {
+.about-section p,
+.pricing-section p,
+.contact-section p {
     font-size: 1.3em;
     max-width: 800px;
     margin: 0 auto;
@@ -183,10 +210,10 @@ header {
     transform: rotateY(0);
 }
 
-.service-card img {
-    width: 150px;
-    height: 150px;
-    object-fit: contain;
+.icon-gold {
+    color: #FFD700;
+    filter: drop-shadow(0 0 10px #00BFFF);
+    font-size: 5rem; /* for Font Awesome icons */
     margin-bottom: 30px;
 }
 
@@ -204,7 +231,7 @@ header {
 
 .learn-more-btn {
     padding: 12px 35px;
-    background: #e9ec1d;
+    background: #FFD700;
     color: #000;
     border: none;
     border-radius: 50px;
@@ -234,7 +261,7 @@ header {
 
 .card-back li::before {
     content: '✦';
-    color: #051396;
+    color: #FFD700;
     position: absolute;
     left: 0;
 }
@@ -248,7 +275,7 @@ footer {
     font-size: 1em;
 }
 
-/* WhatsApp */
+/* WhatsApp Float */
 .whatsapp-float {
     position: fixed;
     bottom: 30px;
@@ -266,10 +293,14 @@ footer {
     50% { transform: translateY(-15px); }
 }
 
-/* Mobile Fixes */
+/* Mobile Responsiveness */
 @media (max-width: 992px) {
     header {
         padding: 20px 40px;
+    }
+
+    .hamburger {
+        display: flex;
     }
 
     .nav-links {
@@ -278,11 +309,11 @@ footer {
         right: -100%;
         width: 70%;
         height: 100vh;
-        background: rgba(240, 6, 6, 0.95);
+        background: rgba(0, 0, 0, 0.95);
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        transition: 0.5s;
+        transition: right 0.5s ease;
         backdrop-filter: blur(15px);
     }
 
@@ -294,11 +325,6 @@ footer {
         margin: 30px 0;
     }
 
-    .hamburger {
-        display: flex;
-        flex-direction: column;
-    }
-
     .services-grid {
         grid-template-columns: 1fr;
         gap: 70px;
@@ -308,9 +334,8 @@ footer {
         height: 600px;
     }
 
-    .service-card img {
-        width: 120px;
-        height: 120px;
+    .icon-gold {
+        font-size: 4rem;
     }
 }
 
@@ -331,70 +356,9 @@ footer {
         font-size: 2.6em;
     }
 
-    .about-section p, .pricing-section p, .contact-section p {
+    .about-section p,
+    .pricing-section p,
+    .contact-section p {
         font-size: 1.2em;
-    }
-}
-/* Add this to your existing styles.css */
-
-.icon-gold {
-    color: #FFD700;
-    filter: drop-shadow(0 0 10px #00BFFF);
-}
-
-/* Agency name next to logo */
-.agency-name {
-    color: #FFD700;
-    margin-left: 15px;
-    font-size: 1.4em;
-}
-
-@media (max-width: 768px) {
-    .agency-name {
-        display: none; /* Hide on mobile to save space */
-    }
-}
-
-/* Rest remains the same as previous version */
-/* Add this to your existing styles.css (replace the old hamburger styles) */
-
-.hamburger {
-    display: none;
-    cursor: pointer;
-    flex-direction: column;
-    justify-content: center;
-    width: 35px;
-    height: 35px;
-    transition: 0.4s;
-}
-
-.hamburger span {
-    display: block;
-    width: 30px;
-    height: 4px;
-    background: #FFD700;
-    margin: 4px 0;
-    transition: 0.4s;
-    border-radius: 2px;
-    box-shadow: 0 0 8px #00BFFF;
-}
-
-/* Cross animation when active */
-.hamburger.active span:nth-child(1) {
-    transform: rotate(45deg) translate(8px, 8px);
-}
-
-.hamburger.active span:nth-child(2) {
-    opacity: 0;
-}
-
-.hamburger.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(8px, -8px);
-}
-
-/* Show hamburger on mobile */
-@media (max-width: 992px) {
-    .hamburger {
-        display: flex;
     }
 }
