@@ -54,3 +54,17 @@ window.addEventListener('scroll', () => {
         document.querySelector('header').style.background = 'rgba(0, 0, 0, 0.7)';
     }
 });
+// This part remains the same – it already toggles the 'active' class correctly
+
+
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('active');
+});
+
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+    });
+});
